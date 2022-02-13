@@ -1,0 +1,77 @@
+[
+  {
+    "teamName": "76ers",
+    "teamAbbrev": "PHI",
+    "teamLocation": "east"
+  },
+  {
+    "teamName": "bucks",
+    "teamAbbrev": "MIL",
+    "teamLocation": "east"
+  },
+  {
+    "teamName": "bulls",
+    "teamAbbrev": "CHI",
+    "teamLocation": "east"
+  },
+  {
+    "teamName": "cavaliers",
+    "teamAbbrev": "CLE",
+    "teamLocation": "east"
+  },
+  {
+    "teamName": "celtics",
+    "teamAbbrev": "BOS",
+    "teamLocation": "east"
+  },
+  {
+    "teamName": "hawks",
+    "teamAbbrev": "ATL",
+    "teamLocation": "east"
+  },
+  {
+    "teamName": "heat",
+    "teamAbbrev": "MIA",
+    "teamLocation": "east"
+  },
+  {
+    "teamName": "hornets",
+    "teamAbbrev": "CHO",
+    "teamLocation": "east"
+  },
+  {
+    "teamName": "knicks",
+    "teamAbbrev": "NYK",
+    "teamLocation": "east"
+  },
+  {
+    "teamName": "magic",
+    "teamAbbrev": "ORL",
+    "teamLocation": "east"
+  },
+  {
+    "teamName": "nets",
+    "teamAbbrev": "BRK",
+    "teamLocation": "east"
+  },
+  {
+    "teamName": "pacers",
+    "teamAbbrev": "IND",
+    "teamLocation": "east"
+  },
+  {
+    "teamName": "pistons",
+    "teamAbbrev": "DET",
+    "teamLocation": "east"
+  },
+  {
+    "teamName": "raptors",
+    "teamAbbrev": "TOR",
+    "teamLocation": "east"
+  },
+  {
+    "teamName": "wizards",
+    "teamAbbrev": "WAS",
+    "teamLocation": "east"
+  }
+]

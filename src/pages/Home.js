@@ -1,14 +1,15 @@
-import logo from './logo.svg';
-import './Home.css';
-import TeamSelector from "./components/teamselector";
+import logo from '../logo.svg';
+import '../Home.css';
+import TeamSelector from "../components/teamselector";
 import {Component} from "react";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import { Outlet, Link } from "react-router-dom";
 
-import siteLogo from './static/images/basketballgenius_logo.png';
+import siteLogo from '../static/images/basketballgenius_logo.png';
 
-class App extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = { apiResponse: "" };
@@ -62,9 +63,9 @@ class App extends Component {
 
             <Row>
               <div className="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3">
-                <a href="/roster?team=76ers">
-                  <Button type="button" className="btn btn-primary btn-lg rounded-pill">Search for a Team</Button>
-                </a>
+                <Link to="/teams">
+                  <Button type="button" className="button btn btn-primary btn-lg rounded-pill">Search for a Team</Button>
+                </Link>
                 <a href="/login">
                   <Button type="button" className="btn btn-primary btn-lg ml-2 rounded-pill">Search for a Player</Button>
                 </a>
@@ -79,4 +80,4 @@ class App extends Component {
 
 }
 
-export default App;
+export default Home;
