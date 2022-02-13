@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 
 import siteLogo from './static/images/basketballgenius_logo.png';
 
-class App extends Component {
+class OldApp extends Component {
   constructor(props) {
     super(props);
     this.state = { apiResponse: "" };
@@ -30,7 +30,7 @@ class App extends Component {
   //         <header className="App-header">
   //           <img src={logo} className="App-logo" alt="logo"/>
   //           <p>
-  //             Edit <code>src/App.js</code> and save to reload.
+  //             Edit <code>src/OldApp.js</code> and save to reload.
   //             Also, {this.state.apiResponse}.
   //           </p>
   //           <TeamSelector/>
@@ -79,4 +79,4 @@ class App extends Component {
 
 }
 
-export default App;
+export default OldApp;

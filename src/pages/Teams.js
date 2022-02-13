@@ -15,7 +15,7 @@ class Teams extends Component {
   }
 
   getEasternTeams() {
-      fetch("http://localhost:9000/testAPI/getEasternTeams")
+      fetch("/getEasternTeams")
           .then(res => res.json())
           .then(res => this.setState({ easternTeams: res }));
   }
@@ -30,7 +30,7 @@ class Teams extends Component {
   //         <header className="App-header">
   //           <img src={logo} className="App-logo" alt="logo"/>
   //           <p>
-  //             Edit <code>src/App.js</code> and save to reload.
+  //             Edit <code>src/OldApp.js</code> and save to reload.
   //             Also, {this.state.apiResponse}.
   //           </p>
   //           <TeamSelector/>
