@@ -6,5 +6,5 @@ def get_team_roster(team, season):
     return get_roster(team, season)
 
 
-def get_player_picture(playerName):
-    return get_player_headshot(playerName)
+def get_player_picture(player_name):
+    return get_player_headshot(player_name)

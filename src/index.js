@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Teams from "./pages/Teams";
+import Roster from "./pages/Roster";
 import NoPage from "./pages/NoPage";
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
             <Route path="teams" element={<Teams />} />
+            <Route path="roster" element={<Roster />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

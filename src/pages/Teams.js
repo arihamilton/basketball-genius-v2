@@ -5,8 +5,10 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import {Link} from "react-router-dom";
 
 import siteLogo from '../static/images/basketballgenius_logo.png';
+
 
 class Teams extends Component {
   constructor(props) {
@@ -69,7 +71,7 @@ class Teams extends Component {
 
                <Row className="d-grid gap-2 d-md-flex justify-content-center mb-lg-3" id="easternRows" xs={2} md={4}>
                    {/*<div className="d-grid gap-2 d-md-flex justify-content-center mb-lg-3" id="easternRows">*/}
-                   {this.state.easternTeams.map(teamObj => <Col className="grow" xs={1} md={1}><TeamSelector className="centered" key={teamObj.teamName} team={teamObj}/></Col>)}
+                   {this.state.easternTeams.map(teamObj => <Col className="grow" xs={1} md={1}><Link to={"/roster?team=" + teamObj.teamAbbrev}><TeamSelector className="centered" key={teamObj.teamName} team={teamObj}/></Link></Col>)}
                    {/*</div>*/}
                </Row>
 
