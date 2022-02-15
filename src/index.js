@@ -10,6 +10,7 @@ import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Teams from "./pages/Teams";
 import Roster from "./pages/Roster";
+import Songs from "./pages/Songs";
 import NoPage from "./pages/NoPage";
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
           <Route index element={<Home />} />
             <Route path="teams" element={<Teams />} />
             <Route path="roster" element={<Roster />} />
+            <Route path="songs" element={<Songs />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

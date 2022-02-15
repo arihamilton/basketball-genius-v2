@@ -7,10 +7,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {Link} from "react-router-dom";
 
-class Roster extends Component {
+class Songs extends Component {
   constructor(props) {
     super(props);
-    this.state = { roster: null };
+    this.state = { songs: null };
   }
 
 
@@ -19,13 +19,13 @@ class Roster extends Component {
 
       // get team name from url
       const authResult = new URLSearchParams(window.location.search);
-      const team = authResult.get('team')
+      const player = authResult.get('player')
 
       // get individual players
-      fetch("/getRoster?team=" + team)
+      fetch("/getSong?player=" + player)
           .then(res => res.json())
           .then(res => Object.values(res))
-          .then(res => this.setState({ roster: res }));
+          .then(res => this.setState({ songs: res }));
   }
 
   componentDidMount() {
@@ -34,11 +34,11 @@ class Roster extends Component {
 
   render() {
 
-      console.log("the current state is:");
-      console.log(this.state.roster);
+      console.log("the current song state is:");
+      console.log(this.state.songs);
 
       // No state data has been loaded yet, can't render properly
-      if (!this.state.roster) {
+      if (!this.state.songs) {
             return <div />
       }
 
@@ -52,7 +52,7 @@ class Roster extends Component {
 
                <Row className="d-grid gap-2 d-md-flex justify-content-center mb-lg-3" id="easternRows" xs={2} md={4}>
                    {/*<div className="d-grid gap-2 d-md-flex justify-content-center mb-lg-3" id="easternRows">*/}
-                   {this.state.roster.map(player => <Link to={"/songs?player=" + player}><h1>{player}</h1></Link>)}
+                   {this.state.songs.map(song => <h1>{song["highlights"][0]["value"]}</h1>)}
                    {/*{Object.entries(this.state.roster["PLAYER"]).map(([key, value]) => <h1>{value}</h1>)}*/}
                    {/*</div>*/}
                </Row>
@@ -64,4 +64,4 @@ class Roster extends Component {
 
 }
 
-export default Roster;
+export default Songs;
