@@ -71,7 +71,7 @@ class Teams extends Component {
 
                <Row className="d-grid gap-2 d-md-flex justify-content-center mb-lg-3" id="easternRows" xs={2} md={4}>
                    {/*<div className="d-grid gap-2 d-md-flex justify-content-center mb-lg-3" id="easternRows">*/}
-                   {this.state.easternTeams.map(teamObj => <Col className="grow" xs={1} md={1}><Link to={"/roster?team=" + teamObj.teamAbbrev}><TeamSelector className="centered" key={teamObj.teamName} team={teamObj}/></Link></Col>)}
+                   {this.state.easternTeams.map(teamObj => <Col className="grow" xs={1} md={1}><Link to={"/loading?team=" + teamObj.teamAbbrev}><TeamSelector className="centered" key={teamObj.teamName} team={teamObj}/></Link></Col>)}
                    {/*</div>*/}
                </Row>
 

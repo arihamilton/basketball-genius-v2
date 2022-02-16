@@ -51,7 +51,7 @@ class Home extends Component {
 
   render() {
     return (
-        <div className="App centered bg-image img-filter">
+        <div className="App centered bg-image bg-lebron img-filter">
           <div className=""/>
           <Container className="justify-content-center">
 

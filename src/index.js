@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import Teams from "./pages/Teams";
 import Roster from "./pages/Roster";
 import Songs from "./pages/Songs";
+import LoadingPage from "./pages/LoadingPage";
 import NoPage from "./pages/NoPage";
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
             <Route path="teams" element={<Teams />} />
             <Route path="roster" element={<Roster />} />
             <Route path="songs" element={<Songs />} />
+            <Route path="loading" element={<LoadingPage />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
