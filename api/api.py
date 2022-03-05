@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, request, jsonify
 from bbrefscrapertools import get_team_roster
 from datetime import date
@@ -26,18 +28,16 @@ def get_roster():
 
     current_date = date.today()
 
-    print("hello")
-
     # ?team=...
     team = request.args.get('team')
-    print("team: " + team)
+    # print("team: " + team)
     data = get_team_roster(team, current_date.year)
 
     data_dict = data.to_dict()
 
     players = data_dict["PLAYER"]
 
-    print(players)
+    # print(players)
     return players
 
 
@@ -49,7 +49,7 @@ def get_song():
 
     # ?player=...
     player = request.args.get('player')
-    print("player: " + player)
+    # print("player: " + player)
 
     songs = genius.search_lyrics(player)
 
@@ -59,6 +59,27 @@ def get_song():
 
     hits_dict = dict(enumerate(hits))
 
-    print(hits_dict)
+    # print(hits_dict)
     return hits_dict
 
+
+# Misc
+
+
+@app.route('/players/<player>', methods=['GET', 'POST'])
+def get_player_cache(player):
+
+    json_url = os.path.join("data", "players.json")
+    data_json = json.load(open(json_url))
+
+    if request.method == 'GET':
+        if player in data_json:
+            return data_json[player]
+
+        return False
+
+    elif request.method == 'POST':
+        event_data = request.json
+        data_json[player] = event_data
+
+    return player
