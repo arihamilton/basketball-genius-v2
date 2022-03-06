@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { Outlet, Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import loading_img from '../static/images/loading_basketball.svg';
 
@@ -57,6 +58,8 @@ class LoadingPage extends Component {
           fetch('/players/' + player, {method: 'POST', body: JSON.stringify(allSongs[i])});
       });
       console.log(songsList);
+
+      return <Navigate to='/songList' />
 
 
       // .then(res => this.setState({ loadingState: "Getting Songs..." }));
