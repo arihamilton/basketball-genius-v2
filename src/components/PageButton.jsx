@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component, useState} from "react";
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 import Row from "react-bootstrap/Row";
@@ -6,36 +6,57 @@ import album_img from "../static/images/sample_album_img.jpg";
 
 const PageButtons = (props) => {
 
+    const [currentPage, setPage] = useState(0);
+
+    const pages = Object.keys(props.songs).length;
+
     let buttons = [];
-      for(let i = 0; i < props.pages; i++){
-          buttons.push(<Button type="button" className="button btn btn-outline-light btn-sm btn-circle rounded-circle"/>);
+      for(let i = 0; i < pages; i++){
+          buttons.push(<Button type="button" onClick={() => setPage(i)} className="button btn btn-outline-light btn-sm btn-circle rounded-circle"/>);
       }
 
-  return (
-      <div>
+      let allSongDisplays = [];
+      for(let i = 0; i < pages; i++){
 
-            {/* Album Image */}
+          let firstSong = props.songs[i];
+          let songLyrics = firstSong["highlights"][0]["value"];
+          let songArt = firstSong["result"]["song_art_image_url"];
+          let songArtists = firstSong["result"]["artist_names"];
+          let songTitle = firstSong["result"]["title"];
+
+          allSongDisplays.push(
+              <React.Fragment>
+              {/* Album Image */}
             <Row className="m-2">
               <div>
-                <img className="d-block mx-lg-auto img-fluid imgDropShadow" src={album_img}
-                     alt="Album Image" width="720"/>
+                <img className="d-block mx-lg-auto img-fluid imgDropShadow" src={songArt}
+                     alt="Album Image" width="300"/>
               </div>
             </Row>
 
           {/* Lyrics */}
             <Row className="m-4">
               <div className="recognize-breaks">
-               <pre>Now can we fall in love <br />While Southernplayalistic banging through the night?<br />(Fall in love, through the night)</pre>
+               <p className="lyrics">{songLyrics}</p>
               </div>
             </Row>
 
           {/* Song Information */}
             <Row className="m-2">
               <div>
-               <p>Isaiah Rashad</p>
-                  <p>West Savannah</p>
+               <p>{songArtists}</p>
+                  <p><b>{songTitle}</b></p>
               </div>
             </Row>
+              </React.Fragment>
+          );
+      }
+
+  return (
+
+      <div>
+
+            {allSongDisplays[currentPage]}
 
           {/* Pagination Buttons */}
           <Row className="m-2">

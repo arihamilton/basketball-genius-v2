@@ -7,4 +7,7 @@ def get_team_roster(team, season):
 
 
 def get_player_picture(player_name):
-    return get_player_headshot(player_name)
+    data = get_player_headshot(player_name)
+    if data:
+        return data
+    return None

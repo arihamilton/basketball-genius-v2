@@ -66,12 +66,13 @@
   align-items: center;
 }
 
-.bg-lebron::before {
-  background-image: url('./static/images/bg_images/music-img-lebron.jpg');
+p {
+  color: white;
 }
 
-.bg-dance::before {
-  background-image: url('./static/images/bg_images/nets-celebrating.gif');
+.lyrics {
+  color: white;
+  background-color: #242424;
 }
 
 .bg-image::before {

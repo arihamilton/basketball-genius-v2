@@ -14,11 +14,13 @@ class LoadingPage extends Component {
   constructor(props) {
     super(props);
     this.state = { loadingState: "Getting Players...",
-                    roster: null
+                    roster: null,
+                    redirect: null
                 };
     // get team name from url
     this.authResult = new URLSearchParams(window.location.search);
-    this.team = this.authResult.get('team')
+    this.team = this.authResult.get('team');
+    this.completeList = null;
   }
 
 
@@ -29,7 +31,8 @@ class LoadingPage extends Component {
           .then(res => Object.values(res))
           .then(res => this.setState({ roster: res }))
           .then(res => this.setState({ loadingState: "Getting Songs..." }))
-          .then(res => this.getPlayerSongs(res));
+          .then(res => this.getPlayerSongs(res))
+          .catch(err => this.setState({ loadingState: "API is down. Please try again :(" }));
 
   }
 
@@ -41,10 +44,14 @@ class LoadingPage extends Component {
 
       // If player songs are already stored in cache, remove them from the roster list.
       this.state.roster.forEach(function (player) {
-          const playerCache = fetch('/players/' + player, {method: 'GET'});
-              if (playerCache !== false) {
+          const playerCache = fetch('/players/' + player, {method: 'GET'}).then(res => res.text()).then(function (value) {
+                if (value !== "none") {
                   songsList[player] = playerCache;
               }
+            });
+              // if (playerCache !== "none") {
+              //     songsList[player] = playerCache;
+              // }
       });
 
       // Parallel API calls for each player
@@ -58,11 +65,9 @@ class LoadingPage extends Component {
           fetch('/players/' + player, {method: 'POST', body: JSON.stringify(allSongs[i])});
       });
       console.log(songsList);
+      this.completeList = songsList;
 
-      return <Navigate to='/songList' />
-
-
-      // .then(res => this.setState({ loadingState: "Getting Songs..." }));
+      this.setState({ redirect: "/songList" });
   }
 
   componentDidMount() {
@@ -73,6 +78,10 @@ class LoadingPage extends Component {
 
       console.log("the current state is:");
       console.log(this.state.roster);
+
+      if (this.state.redirect) {
+    return <Navigate to='/songList' replace={false} state={this.completeList} />
+        }
 
     return (
         <div className="App centered bg-image bg-dance img-filter">

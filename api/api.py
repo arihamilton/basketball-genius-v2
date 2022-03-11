@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask, request, jsonify
-from bbrefscrapertools import get_team_roster
+from bbrefscrapertools import get_team_roster, get_player_picture
 from datetime import date
 import json
 
@@ -41,6 +41,20 @@ def get_roster():
     return players
 
 
+@app.route('/getHeadshot')
+def get_headshot_url():
+
+    # ?player=...
+    player = request.args.get('player')
+    # print("team: " + team)
+    data = get_player_picture(player)
+
+    if data:
+        return data
+
+    return ""
+
+
 # Genius API
 
 
@@ -76,7 +90,7 @@ def get_player_cache(player):
         if player in data_json:
             return data_json[player]
 
-        return False
+        return "none"
 
     elif request.method == 'POST':
         event_data = request.json
