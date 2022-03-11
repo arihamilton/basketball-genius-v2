@@ -109,3 +109,7 @@ p {
 .recognize-breaks {
     white-space: pre-wrap;
 }
+
+.pos-fixed {
+  position: relative;
+}

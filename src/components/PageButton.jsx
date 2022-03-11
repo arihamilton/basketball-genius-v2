@@ -61,12 +61,15 @@ const PageButtons = (props) => {
           {/* Pagination Buttons */}
           <Row className="m-2">
               <div>
-                  <Button type="button" className="button btn bg-transparent btn-sm btn-circle rounded-circle">❮</Button>
+                  <Button type="button" onClick={() => setPage((currentPage <= 0) ? pages-1 : currentPage-1)} className="button btn bg-transparent btn-sm btn-circle rounded-circle">❮</Button>
           {buttons}
-                  <Button type="button" className="button btn bg-transparent btn-sm btn-circle rounded-circle">❯</Button>
+                  <Button type="button" onClick={() => setPage((currentPage+1)%(pages))} className="button btn bg-transparent btn-sm btn-circle rounded-circle">❯</Button>
                   </div>
             </Row>
 
+          <Row>
+              <p>{currentPage+1}</p>
+          </Row>
 
 
       </div>

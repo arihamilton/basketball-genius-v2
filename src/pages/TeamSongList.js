@@ -13,16 +13,19 @@ import PageButtons from "../components/PageButton";
 import Col from "react-bootstrap/Col";
 import headshot_img from "../static/images/sample_headshot.jpg";
 import Image from "react-bootstrap/Image";
+import AllPlayerSongs from "../components/AllPlayerSongs";
 
 
 
 function TeamSongList(props) {
 
     const [headshots, updateHeadshots] = useState([]);
+    const [currentPlayerPage, setPlayerPage] = useState(0);
 
     const { state } = useLocation();
 
     const playerEntries = Object.entries(state);
+
 
     // Get and store player headshots
     const getData = async () => {
@@ -34,62 +37,55 @@ function TeamSongList(props) {
         // Fetch all player headshots
         if (headshots.length < playerEntries.length) {
             for (let i = 0; i < playerEntries.length; i++) {
-                await fetch("/getHeadshot?player=" + playerEntries[i][0]).then(res => res.text()).then(res => (res.length <= 100) ? updateHeadshots(oldArray => [...oldArray, res]) : updateHeadshots(oldArray => [...oldArray, "none"])).catch(() => updateHeadshots(oldArray => [...oldArray, "none"]));
+                await fetch("/getHeadshot?player=" + playerEntries[i][0]).then(res => res.text())
+                    .then(res => (res.length <= 100) ? updateHeadshots(oldArray => [...oldArray, res]) : updateHeadshots(oldArray => [...oldArray, "none"]))
+                    .catch(() => updateHeadshots(oldArray => [...oldArray, "none"]))
+                    .then(() => songLists.push(<AllPlayerSongs key="idk" player={playerEntries[i]} portrait={headshots[i]}/>));
             }
         }
+        // Fetch all player headshots
+
     };
 
     useEffect(() => {
         getData();
     }, []);
 
-
-  //console.log(Object.entries(state)[0]);
-
     // Create navigation buttons for each player
     let playerButtons = [];
       for(let i = 0; i < playerEntries.length; i++){
           playerButtons.push(<Col>
-              <Button type="button" className="button btn btn-circle rounded-circle grow">
+              <Button type="button" onClick={() => setPlayerPage(i)} className="button btn btn-circle rounded-circle grow">
               <Image src={headshots[i]} className="playerButton" id={playerEntries[i][0]} rounded fluid width="30" height="30"/>
           </Button>
           </Col>);
       }
 
-  let firstPlayer = playerEntries[0];
-
-  let firstPlayerName = firstPlayer[0];
-  let firstPlayerSongs = firstPlayer[1];
-
-  let firstSong = firstPlayerSongs[0];
-
-
+      // Create song lists for each player
+    let songLists = [];
+        if (songLists.length < playerEntries.length) {
+            for (let i = 0; i < playerEntries.length; i++) {
+                songLists[i] = (<AllPlayerSongs key="idk" player={playerEntries[i]} portrait={headshots[i]}/>);
+            }
+        }
 
     console.log(headshots)
+    console.log(songLists)
     return (
-        <div className="App centered img-filter">
+        <div className="App img-filter">
           <div className=""/>
           <Container className="justify-content-center">
 
               {/* Player Headshots */}
-              <Row>
+              <Row className="my-3">
                   {playerButtons}
               </Row>
 
-              <Row>
-              {/* Player Information */}
-            <Col className="m-0 col-2">
-              <div>
-                  <img className="d-block mx-lg-auto img-fluid imgDropShadow" src={headshots[0]}
-                     alt="Player Portait" width="200"/>
-                  <p>{firstPlayerName}</p>
-              </div>
-            </Col>
+              <Row className="centered">
 
-                  {/* All Player Songs */}
-              <Col className="m-0 col-10">
-              <PageButtons className="centered" key="idk" songs={firstPlayerSongs} pages={5}/>
-            </Col>
+              {/* Player Songs */}
+                  {songLists[currentPlayerPage]}
+                  {/*<AllPlayerSongs key="idk" player={playerEntries[0]} portrait={headshots[0]}/>*/}
 
             </Row>
           </Container>

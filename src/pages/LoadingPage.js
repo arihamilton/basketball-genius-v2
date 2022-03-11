@@ -9,6 +9,7 @@ import { Outlet, Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
 import loading_img from '../static/images/loading_basketball.svg';
+import refresh_img from '../static/images/refresh_button.png';
 
 class LoadingPage extends Component {
   constructor(props) {
@@ -83,6 +84,17 @@ class LoadingPage extends Component {
     return <Navigate to='/songList' replace={false} state={this.completeList} />
         }
 
+      let loadingButton;
+      if (this.state.loadingState === "API is down. Please try again :(") {
+          loadingButton = <Link to={"/"}>
+              <img className="d-block mx-lg-auto img-fluid imgDropShadow" src={refresh_img}
+                     alt="Refresh Image" width="720"/>
+          </Link>;
+      } else {
+          loadingButton = <img className="d-block mx-lg-auto img-fluid imgDropShadow loading-image" src={loading_img}
+                     alt="Loading Image" width="720"/>;
+      }
+
     return (
         <div className="App centered bg-image bg-dance img-filter">
           <div className=""/>
@@ -91,8 +103,7 @@ class LoadingPage extends Component {
             {/*Loading Image*/}
             <Row className="mb-5">
               <div>
-                <img className="d-block mx-lg-auto img-fluid imgDropShadow loading-image" src={loading_img}
-                     alt="Loading Image" width="720"/>
+                  {loadingButton}
               </div>
             </Row>
 
