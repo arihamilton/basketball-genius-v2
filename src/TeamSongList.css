@@ -71,8 +71,11 @@ p {
 }
 
 .lyrics {
-  color: white;
-  background-color: #242424;
+  background-color: white;
+  color: black;
+  display: inline;
+  padding: 2px 0;
+  text-decoration: none;
 }
 
 .bg-image::before {
@@ -111,5 +114,5 @@ p {
 }
 
 .pos-fixed {
-  position: relative;
+  position: fixed;
 }

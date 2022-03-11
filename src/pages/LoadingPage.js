@@ -88,7 +88,7 @@ class LoadingPage extends Component {
       if (this.state.loadingState === "API is down. Please try again :(") {
           loadingButton = <Link to={"/"}>
               <img className="d-block mx-lg-auto img-fluid imgDropShadow" src={refresh_img}
-                     alt="Refresh Image" width="720"/>
+                     alt="Refresh Image" width="400"/>
           </Link>;
       } else {
           loadingButton = <img className="d-block mx-lg-auto img-fluid imgDropShadow loading-image" src={loading_img}

@@ -27,22 +27,22 @@ const PageButtons = (props) => {
           allSongDisplays.push(
               <React.Fragment>
               {/* Album Image */}
-            <Row className="m-2">
+            <Row className="m-2 h-25">
               <div>
-                <img className="d-block mx-lg-auto img-fluid imgDropShadow" src={songArt}
+                <img className="d-block  mx-lg-auto align-items-start img-fluid imgDropShadow" src={songArt}
                      alt="Album Image" width="300"/>
               </div>
             </Row>
 
           {/* Lyrics */}
-            <Row className="m-4">
+            <Row className="m-4 align-items-center h-25">
               <div className="recognize-breaks">
                <p className="lyrics">{songLyrics}</p>
               </div>
             </Row>
 
           {/* Song Information */}
-            <Row className="m-2">
+            <Row className="m-2 align-items-end">
               <div>
                <p>{songArtists}</p>
                   <p><b>{songTitle}</b></p>
@@ -52,14 +52,19 @@ const PageButtons = (props) => {
           );
       }
 
+      // if (currentPage >= pages-1) {
+      //     setPage(0)
+      // }
+
   return (
 
       <div>
-
+            <div className="align-items-center">
             {allSongDisplays[currentPage]}
+                </div>
 
           {/* Pagination Buttons */}
-          <Row className="m-2">
+          <Row className="m-2 align-items-end">
               <div>
                   <Button type="button" onClick={() => setPage((currentPage <= 0) ? pages-1 : currentPage-1)} className="button btn bg-transparent btn-sm btn-circle rounded-circle">❮</Button>
           {buttons}

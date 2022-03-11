@@ -74,14 +74,14 @@ function TeamSongList(props) {
     return (
         <div className="App img-filter">
           <div className=""/>
-          <Container className="justify-content-center">
+          <Container className="justify-content-center container-fluid">
 
               {/* Player Headshots */}
               <Row className="my-3">
                   {playerButtons}
               </Row>
 
-              <Row className="centered">
+              <Row className="centered container-fluid pos-fixed">
 
               {/* Player Songs */}
                   {songLists[currentPlayerPage]}
