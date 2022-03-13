@@ -1,0 +1,77 @@
+[
+  {
+    "teamName": "clippers",
+    "teamAbbrev": "LAC",
+    "teamLocation": "west"
+  },
+  {
+    "teamName": "grizzlies",
+    "teamAbbrev": "MEM",
+    "teamLocation": "west"
+  },
+  {
+    "teamName": "jazz",
+    "teamAbbrev": "UTA",
+    "teamLocation": "west"
+  },
+  {
+    "teamName": "kings",
+    "teamAbbrev": "SAC",
+    "teamLocation": "west"
+  },
+  {
+    "teamName": "lakers",
+    "teamAbbrev": "LAL",
+    "teamLocation": "west"
+  },
+  {
+    "teamName": "mavericks",
+    "teamAbbrev": "DAL",
+    "teamLocation": "west"
+  },
+  {
+    "teamName": "nuggets",
+    "teamAbbrev": "DEN",
+    "teamLocation": "west"
+  },
+  {
+    "teamName": "pelicans",
+    "teamAbbrev": "NOP",
+    "teamLocation": "west"
+  },
+  {
+    "teamName": "rockets",
+    "teamAbbrev": "HOU",
+    "teamLocation": "west"
+  },
+  {
+    "teamName": "spurs",
+    "teamAbbrev": "SAS",
+    "teamLocation": "west"
+  },
+  {
+    "teamName": "suns",
+    "teamAbbrev": "PHO",
+    "teamLocation": "PHO"
+  },
+  {
+    "teamName": "thunder",
+    "teamAbbrev": "OKC",
+    "teamLocation": "west"
+  },
+  {
+    "teamName": "timberwolves",
+    "teamAbbrev": "MIN",
+    "teamLocation": "west"
+  },
+  {
+    "teamName": "trailblazers",
+    "teamAbbrev": "POR",
+    "teamLocation": "west"
+  },
+  {
+    "teamName": "warriors",
+    "teamAbbrev": "GSW",
+    "teamLocation": "west"
+  }
+]

@@ -10,6 +10,8 @@ genius = lyricsgenius.Genius()
 
 app = Flask(__name__)
 
+# Basketball Reference API
+
 
 @app.route('/getEasternTeams')
 def get_eastern_teams():
@@ -20,8 +22,14 @@ def get_eastern_teams():
     data = json.load(jsdata)
     return jsonify(data)
 
+@app.route('/getWesternTeams')
+def get_western_teams():
+    # Opening JSON file
+    jsdata = open('static/western_teams.json',)
 
-# Basketball Reference API
+    # returns JSON object as dict
+    data = json.load(jsdata)
+    return jsonify(data)
 
 @app.route('/getRoster')
 def get_roster():

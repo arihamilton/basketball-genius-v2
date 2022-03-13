@@ -1,6 +1,6 @@
 import '../Teams.css';
 import TeamSelector from "../components/teamselector";
-import {Component, useEffect, useMemo, useState} from "react";
+import React, {Component, useEffect, useMemo, useState} from "react";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,12 +9,16 @@ import {Link} from "react-router-dom";
 
 import siteLogo from '../static/images/basketballgenius_logo.png';
 import NavigationBar from "../components/navigationbar";
+import refresh_img from "../static/images/refresh_button.png";
+import loading_img from "../static/images/loading_basketball.svg";
 
 
 function Teams(props) {
 
   const [easternTeams, updateEasternTeams] = useState(null);
+  const [westernTeams, updateWesternTeams] = useState(null);
   const [teamName, updateTeamName] = useState("");
+  const [teamPage, updateTeamPage] = useState(0);
 
   const bgImages = ["bg-kd", "bg-lebron", "bg-luka", "bg-mj", "bg-russ"]
 
@@ -29,8 +33,15 @@ function Teams(props) {
           .then(res => updateEasternTeams(res));
   };
 
+  const getWesternTeams = () => {
+      fetch("/getWesternTeams")
+          .then(res => res.json())
+          .then(res => updateWesternTeams(res));
+  };
+
   useEffect(() => {
         getEasternTeams();
+        getWesternTeams();
     }, []);
 
 
@@ -39,8 +50,21 @@ function Teams(props) {
             return <div />
       }
 
+      // No state data has been loaded yet, can't render properly
+      if (!westernTeams) {
+            return <div />
+      }
 
-    console.log(teamName);
+      let eastButtons = easternTeams.map(teamObj => <Col className="grow" xs={1} md={1}><Link  to={"/loading?team=" + teamObj.teamAbbrev} onMouseOver={() => updateTeamName(teamObj.teamName)}><TeamSelector className="centered" key={teamObj.teamName} team={teamObj}/></Link></Col>);
+      let westButtons = westernTeams.map(teamObj => <Col className="grow" xs={1} md={1}><Link  to={"/loading?team=" + teamObj.teamAbbrev} onMouseOver={() => updateTeamName(teamObj.teamName)}><TeamSelector className="centered" key={teamObj.teamName} team={teamObj}/></Link></Col>)
+
+    let teamButtons;
+    if (teamPage === 0) {
+          teamButtons = eastButtons;
+      } else {
+          teamButtons = westButtons;
+      }
+
     return (
         <div>
         <NavigationBar />
@@ -52,15 +76,32 @@ function Teams(props) {
                   <h1 className="centered-text">Teams</h1>
               </Row>
 
-               <Row className="d-grid gap-2 d-md-flex justify-content-center mb-lg-3" id="easternRows" xs={2} md={4}>
-                   {/*<div className="d-grid gap-2 d-md-flex justify-content-center mb-lg-3" id="easternRows">*/}
-                   {easternTeams.map(teamObj => <Col className="grow" xs={1} md={1}><Link  to={"/loading?team=" + teamObj.teamAbbrev} onMouseOver={() => updateTeamName(teamObj.teamName)}><TeamSelector className="centered" key={teamObj.teamName} team={teamObj}/></Link></Col>)}
-                   {/*</div>*/}
+              <Row>
+
+              {/*Pagination Left*/}
+                  <Col className="col-1 align-centered">
+                    <Button type="button" onClick={() => updateTeamPage(0)} className="transparent-button bg-transparent btn-sm">❮</Button>
+                  </Col>
+
+              <Col className="col-10">
+               <Row className="d-grid gap-2 d-md-flex justify-content-center" id="teamRows">
+
+                   {teamButtons}
+
                </Row>
 
-              <Row className="my-3">
+                  <Row className="my-3">
                   <p className="centered-text first-letter">{teamName}</p>
               </Row>
+
+                  </Col>
+
+              {/*Pagination Right*/}
+                   <Col className="col-1 align-centered">
+                    <Button type="button" onClick={() => updateTeamPage(1)} className="transparent-button bg-transparent btn-sm">❯</Button>
+                    </Col>
+
+            </Row>
 
           </Container>
         </div>
