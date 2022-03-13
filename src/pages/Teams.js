@@ -53,16 +53,16 @@ class Teams extends Component {
 
   render() {
 
-      console.log("the current state is:");
-      console.log(this.state.easternTeams);
-
       // No state data has been loaded yet, can't render properly
       if (!this.state.easternTeams) {
             return <div />
       }
 
+      const bgImages = ["bg-kd", "bg-lebron", "bg-luka", "bg-mj", "bg-russ"]
+    const imgIndex = Math.floor(Math.random() * 5);
+
     return (
-        <div className="centered">
+        <div className={"centered " + bgImages[imgIndex] + " img-filter bg-image-dark"}>
           <Container className="justify-content-center" fluid="md">
 
               <Row>

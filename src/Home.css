@@ -108,7 +108,7 @@
   height: 115%;
 
   -webkit-filter: blur(5px);
-  filter: blur(5px) brightness(30%) opacity(90%);; /* blue filter */
+  filter: blur(5px) brightness(30%) opacity(90%);; /* dark filter */
 
 }
 

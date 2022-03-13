@@ -17,3 +17,79 @@ transition: all .2s ease-in-out;
 .grow:hover {
 transform: scale(1.1);
 }
+
+/*Background Images*/
+
+.bg-kd::before {
+  background-image: url('./static/images/bg_images/music-img-kd.jpg');
+}
+
+.bg-lebron::before {
+  background-image: url('./static/images/bg_images/music-img-lebron.jpg');
+}
+
+.bg-luka::before {
+  background-image: url('./static/images/bg_images/music-img-luka.jpg');
+}
+
+.bg-mj::before {
+  background-image: url('./static/images/bg_images/music-img-mj.png');
+}
+
+.bg-russ::before {
+  background-image: url('./static/images/bg_images/music-img-russ.jpg');
+}
+
+.bg-dance::before {
+  background-image: url('./static/images/bg_images/nets-celebrating.gif');
+}
+
+.bg-image::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: -5%;
+  left: -5%;
+  z-index: -1;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 115%;
+  height: 115%;
+
+  -webkit-filter: blur(5px);
+  filter: blur(5px) brightness(30%) opacity(90%);; /* dark filter */
+
+}
+
+.bg-image {
+    content: "";
+    background: rgba(0, 0, 50, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.bg-image-dark::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: -5%;
+  left: -5%;
+  z-index: -1;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 115%;
+  height: 115%;
+
+  -webkit-filter: blur(5px);
+  filter: blur(5px) brightness(10%) opacity(90%);; /* dark filter */
+}
