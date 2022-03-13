@@ -12,8 +12,10 @@ import loading_img from '../static/images/loading_basketball.svg';
 import PageButtons from "../components/PageButton";
 import Col from "react-bootstrap/Col";
 import headshot_img from "../static/images/sample_headshot.jpg";
+import logo_icon from "../static/images/final_logo.png"
 import Image from "react-bootstrap/Image";
 import AllPlayerSongs from "../components/AllPlayerSongs";
+import {Nav, Navbar, NavDropdown} from "react-bootstrap";
 
 
 
@@ -72,25 +74,36 @@ function TeamSongList(props) {
     console.log(headshots)
     console.log(songLists)
     return (
+        <div>
+        <Navbar bg="light" expand="lg">
+  <Container className="justify-content-center">
+      <Navbar.Brand href="/"  ><img width="120px" height="auto" className="img-responsive" src={logo_icon} /></Navbar.Brand>
+  </Container>
+</Navbar>
+
         <div className="App img-filter">
           <div className=""/>
           <Container className="justify-content-center container-fluid">
 
-              {/* Player Headshots */}
-              <Row className="my-3">
-                  {playerButtons}
-              </Row>
 
-              <Row className="centered container-fluid pos-fixed">
+
+              <Row className="my-5 container-fluid">
 
               {/* Player Songs */}
                   {songLists[currentPlayerPage]}
                   {/*<AllPlayerSongs key="idk" player={playerEntries[0]} portrait={headshots[0]}/>*/}
-
             </Row>
+
+              {/* Player Headshots */}
+              <Row className="my-5 nonstrict-center">
+                  {playerButtons}
+              </Row>
+
           </Container>
 
         </div>
+
+            </div>
     );
   };
 

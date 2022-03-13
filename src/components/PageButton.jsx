@@ -27,15 +27,15 @@ const PageButtons = (props) => {
           allSongDisplays.push(
               <React.Fragment>
               {/* Album Image */}
-            <Row className="m-2 h-25">
+            <Row className="m-2">
               <div>
                 <img className="d-block  mx-lg-auto align-items-start img-fluid imgDropShadow" src={songArt}
-                     alt="Album Image" width="300"/>
+                     alt="Album Image" width="200"/>
               </div>
             </Row>
 
           {/* Lyrics */}
-            <Row className="m-4 align-items-center h-25">
+            <Row className="m-4 align-items-center">
               <div className="recognize-breaks">
                <p className="lyrics">{songLyrics}</p>
               </div>
@@ -57,6 +57,8 @@ const PageButtons = (props) => {
       // }
 
   return (
+
+
 
       <div>
             <div className="align-items-center">

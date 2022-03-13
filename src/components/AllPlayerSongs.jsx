@@ -24,7 +24,7 @@ const AllPlayerSongs = (props) => {
             </Col>
 
             {/* All Player Songs */}
-            <Col className="m-0 col-10">
+            <Col className="m-0 col-10 container">
               <PageButtons className="centered" key="idk" songs={playerSongs}/>
             </Col>
             </Row>

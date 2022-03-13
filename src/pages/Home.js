@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { Outlet, Link } from "react-router-dom";
 
-import siteLogo from '../static/images/basketballgenius_logo.png';
+import siteLogo from '../static/images/final_logo.png';
 
 class Home extends Component {
   constructor(props) {
