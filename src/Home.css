@@ -66,8 +66,26 @@
   align-items: center;
 }
 
+/*Background Images*/
+
+.bg-kd::before {
+  background-image: url('./static/images/bg_images/music-img-kd.jpg');
+}
+
 .bg-lebron::before {
   background-image: url('./static/images/bg_images/music-img-lebron.jpg');
+}
+
+.bg-luka::before {
+  background-image: url('./static/images/bg_images/music-img-luka.jpg');
+}
+
+.bg-mj::before {
+  background-image: url('./static/images/bg_images/music-img-mj.png');
+}
+
+.bg-russ::before {
+  background-image: url('./static/images/bg_images/music-img-russ.jpg');
 }
 
 .bg-dance::before {

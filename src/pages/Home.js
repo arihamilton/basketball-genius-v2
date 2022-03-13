@@ -15,48 +15,20 @@ class Home extends Component {
     this.state = { apiResponse: "" };
   }
 
-  //
-  // callAPI() {
-  //     fetch("http://localhost:9000/testAPI")
-  //         .then(res => res.text())
-  //         .then(res => this.setState({ apiResponse: res }));
-  // }
-  //
-  // componentWillMount() {
-  //     this.callAPI();
-  // }
 
-  // render() {
-  //   return (
-  //       <div className="App">
-  //         <header className="App-header">
-  //           <img src={logo} className="App-logo" alt="logo"/>
-  //           <p>
-  //             Edit <code>src/OldApp.js</code> and save to reload.
-  //             Also, {this.state.apiResponse}.
-  //           </p>
-  //           <TeamSelector/>
-  //           <a
-  //               className="App-link"
-  //               href="https://reactjs.org"
-  //               target="_blank"
-  //               rel="noopener noreferrer"
-  //           >
-  //             Learn React
-  //           </a>
-  //         </header>
-  //       </div>
-  //   );
-  // }
 
   render() {
+
+    const bgImages = ["bg-kd", "bg-lebron", "bg-luka", "bg-mj", "bg-russ"]
+    const imgIndex = Math.floor(Math.random() * 5);
+
     return (
-        <div className="App centered bg-image bg-lebron img-filter">
+        <div className={"App centered bg-image " + bgImages[imgIndex] + " img-filter"}>
           <div className=""/>
           <Container className="justify-content-center">
 
             <Row>
-              <div>
+              <div className="my-3">
                 <img className="d-block mx-lg-auto img-fluid imgDropShadow" src={siteLogo}
                      alt="BasketballGenius Logo" width="720"/>
               </div>
