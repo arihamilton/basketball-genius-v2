@@ -56,11 +56,20 @@ function TeamSongList(props) {
     // Create navigation buttons for each player
     let playerButtons = [];
       for(let i = 0; i < playerEntries.length; i++){
-          playerButtons.push(<Col>
-              <Button type="button" onClick={() => setPlayerPage(i)} className="button btn btn-circle rounded-circle grow">
-              <Image src={headshots[i]} className="playerButton" id={playerEntries[i][0]} rounded fluid width="30" height="30"/>
-          </Button>
-          </Col>);
+
+          // Only create if player has 1 or more songs
+          let playerSongs = playerEntries[i][1];
+          if (Object.values(playerSongs).length > 0) {
+
+              playerButtons.push(<Col>
+                  <Button type="button" onClick={() => setPlayerPage(i)}
+                          className="button btn btn-circle rounded-circle grow">
+                      <Image src={headshots[i]} className="playerButton" id={playerEntries[i][0]} rounded fluid
+                             width="30" height="30"/>
+                  </Button>
+              </Col>);
+
+          }
       }
 
       // Create song lists for each player
@@ -71,8 +80,6 @@ function TeamSongList(props) {
             }
         }
 
-    console.log(headshots)
-    console.log(songLists)
     return (
         <div>
         <Navbar bg="light" expand="lg">

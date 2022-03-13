@@ -73,7 +73,7 @@ def get_song():
     player = request.args.get('player')
     # print("player: " + player)
 
-    songs = genius.search_lyrics(player)
+    songs = genius.search_lyrics(player, 30)
 
     sections = songs["sections"]
     main_sect = sections[0]

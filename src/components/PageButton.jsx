@@ -52,9 +52,9 @@ const PageButtons = (props) => {
           );
       }
 
-      // if (currentPage >= pages-1) {
-      //     setPage(0)
-      // }
+      if (currentPage >= pages) {
+          setPage(0)
+      }
 
   return (
 
