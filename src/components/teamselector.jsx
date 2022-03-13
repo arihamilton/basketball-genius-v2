@@ -46,7 +46,6 @@ const TeamSelector = (props) => {
 
           <Image src={logo} className="teamButton" id={props.team["teamAbbrev"]} rounded fluid />
 
-        <p>{props.team["teamName"]}</p>
       </div>
     );
 };

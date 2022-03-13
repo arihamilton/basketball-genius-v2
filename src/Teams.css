@@ -93,3 +93,15 @@ transform: scale(1.1);
   -webkit-filter: blur(5px);
   filter: blur(5px) brightness(10%) opacity(90%);; /* dark filter */
 }
+
+.centered-text {
+  text-align: center;
+}
+
+h1 {
+  color: white;
+}
+
+p::first-letter {
+    text-transform: capitalize;
+}
